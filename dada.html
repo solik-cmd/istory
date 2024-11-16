@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор случайных историй с изменением фона</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      transition: background-color 1s; /* Плавное изменение фона */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .story {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Генератор случайных историй</h1>
+  <button onclick="generateStory()">Создать историю</button>
+  <div class="story" id="story"></div>
+
+  <script>
+    // Массивы с элементами для случайных историй
+    const subjects = ['Кошка', 'Девушка', 'Программист', 'Пират', 'Маг', 'Астроном'];
+    const actions = ['путешествовала', 'сражалась', 'загадала загадку', 'выиграла в лотерею', 'нашла сокровища', 'обнаружила инопланетян'];
+    const places = ['на Марсе', 'в туманном лесу', 'в пустыне', 'на космическом корабле', 'в древнем замке', 'на сказочной планете'];
+    const objects = ['чудесный артефакт', 'потерянный город', 'магический меч', 'космическую станцию', 'заклинание', 'невидимку'];
+
+    // Массивы с цветами фона
+    const backgroundColors = ['#FFDDC1', '#C1E1DC', '#F7D6A7', '#E4F9F5', '#F3E5AB', '#FFABAB'];
+
+    // Функция для генерации случайной истории
+    function generateStory() {
+      // Генерация случайных индексов для истории
+      const subject = subjects[Math.floor(Math.random() * subjects.length)];
+      const action = actions[Math.floor(Math.random() * actions.length)];
+      const place = places[Math.floor(Math.random() * places.length)];
+      const object = objects[Math.floor(Math.random() * objects.length)];
+
+      // Составление истории
+      const story = `${subject} ${action} ${place} и нашла ${object}.`;
+      
+      // Отображение истории на странице
+      document.getElementById('story').textContent = story;
+
+      // Генерация случайного цвета фона
+      const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+      document.body.style.backgroundColor = randomColor;
+    }
+  </script>
+</body>
+</html>
